@@ -26,7 +26,7 @@ In the index.ts file exported a function called "log". When called with a string
 
 Before calling log in any file it was imported the using the line: " import {log} from "./index";:" 
 
-#In new.ts log function was called for creating the log when:
+In new.ts log function was called for creating the log when:
 
 1/ the new user was created.
 
