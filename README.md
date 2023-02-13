@@ -48,7 +48,6 @@ In send.ts log function was called for creating the log when:
 2/ message can not be sent because sender is not authenticated.
 
 3/ message can not be sent because the reciever does not exist.
-
 4/ message sent successfully.
 
 ## Mitigation
