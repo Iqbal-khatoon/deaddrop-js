@@ -55,7 +55,7 @@ In send.ts log function was called for creating the log when:
 
 Existing system was changed in a way that before sending a message sender should be authenticated. So to ensure that only the user who is part of the system and is genuine can send the message. For that i changed the command of sending the message as:
 
-`node dist/index.js --send --from user --to`
+`node dist/index.js --send --from user --to user`
 
 This change was made into the file index.ts, Where the sender was validated.
 
