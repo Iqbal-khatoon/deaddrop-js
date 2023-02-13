@@ -47,6 +47,7 @@ if (options.new) {
         newUser(user);
     }
 
+//validating the sender
 } else if (options.send) {
     let user = validateInputString( options.to) ;
     let sender = validateInputString(options.from);
@@ -72,7 +73,7 @@ if (options.new) {
     console.error("Please specify a verb for the utility. Valid verbs are: read, send, new");
 }
 
-
+//log implementation
 import * as fs from 'fs';
 
 export const log = (message: string) => {
