@@ -65,5 +65,13 @@ Then in the send.ts file, changed the sendMessage function. Sender was added as 
 
 I previously made changes to the system to require sender authentication before sending a message. Along with previous changes, I modified the database by adding two fields to the Messages table: sender and mac. The mac field stores a generated mac for each message and the sender field holds the sender's information. To prevent the mac from being edited, a Before Updated Trigger was created to make the field read-only and raise an error if someone tries to change it.
 
+## Mac Implementation
+
+## Sender Authentication Implementation
+I had previously explained the sender authentication process in a previous assignment. To explain more for verify senders before sending messages, I modified the index file by adding a "from" verb in the options that takes a username as an argument. The username is also validated. In the send file, the sender is checked for existence and then authenticated using the authenticate function.
+
+## Message Sending Implementation
+The function for saving messages was modified to reflect changes made in the message file. The query was also updated to include the sender and mac fields. To insert the sender's ID into the sender field, a sub-query was used. A new function called generateMac was created to generate the mac. This function uses the sender's name as a key and the message as input, ensuring the message's integrity even if the sender changes. The mac cannot be modified, making it difficult for malicious users to alter the message and create a new mac. Additionally, if the message is changed, the message will fail the integrity test, and the recipient will not be able to read the warning against it.
+
 
 
