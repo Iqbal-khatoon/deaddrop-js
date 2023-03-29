@@ -14,11 +14,16 @@ export async function readMessages(user: string) {
             log(user+ " can not read message, as can not be authenticated ");
             throw new Error("Unable to authenticate");
         }
-
-        getMessagesForUser(user).then((messages) => {
-            messages.forEach((e: string) => console.log(e, "\n"));
+        
+        await getMessagesForUser(user).then((messages) => {
+            // console.log(messages)
+            // messages.forEach((e: string) => console.log(e, "\n"));
+            messages.forEach((e: string) => {
+                console.log(e.toString(), "\n");
+                log(user +" user read the message successfully ");
         });
-        log(user +" user read the message successfully ");
+        });
+        
     } catch (error) {
         console.error("Error occured during reading.", error);
     }

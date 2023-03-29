@@ -1,5 +1,5 @@
 import readline from "readline";
-import { saveMessage, userExists, getMessagesForUser } from "./db";
+import { saveMessage, userExists,generarateMac, getMessagesForUser } from "./db";
 import {log} from "./index";
 import { authenticate } from "./session";
 
@@ -19,11 +19,17 @@ export const sendMessage = async (sender: string, user: string) => {
             log(" cant send message because reciever " +user+" does not exist " );
             throw new Error("Destination user does not exist");
         }
-
-        getUserMessage().then(async (message) => {
-            await saveMessage(message, user);
-        });
-        log(" Message sent successfully to the user " + user + " from user " +sender);
+        try {
+            getUserMessage().then(async (message) => {
+                let mac=await generarateMac(message,sender);
+               
+                await saveMessage(message, user, sender,mac);
+            });
+            log(" Message sent successfully to the user " + user + " from user " +sender);
+        } catch (error) {
+            log("error"+error)
+        }
+        
   
     } catch (error) {
         //log(" cant send message because User does not exist " );

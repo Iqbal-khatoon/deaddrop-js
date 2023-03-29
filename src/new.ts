@@ -1,5 +1,4 @@
 import readline from "readline";
-
 import { noUsers, setUserPassHash, userExists } from "./db";
 import { authenticate, getPassword } from "./session";
 import {log} from "./index";
@@ -25,6 +24,7 @@ export const newUser = async (user: string) => {
         log("Error ocurred creating a new user");
         
     }
+    
 }
 
 const getNewUsername = async (): Promise<string> => {

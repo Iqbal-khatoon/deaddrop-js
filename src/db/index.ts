@@ -8,5 +8,5 @@ export {
 
 export {
     getMessagesForUser,
-    saveMessage,
+    saveMessage,generarateMac
 } from "./message";
