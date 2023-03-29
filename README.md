@@ -60,3 +60,10 @@ Existing system was changed in a way that before sending a message sender should
 This change was made into the file index.ts, Where the sender was validated.
 
 Then in the send.ts file, changed the sendMessage function. Sender was added as a parameter. Inside the function it was checked if the sender exixts and if it exists then password is asked before sending the message.
+
+## Modification of the Database
+
+I previously made changes to the system to require sender authentication before sending a message. Along with previous changes, I modified the database by adding two fields to the Messages table: sender and mac. The mac field stores a generated mac for each message and the sender field holds the sender's information. To prevent the mac from being edited, a Before Updated Trigger was created to make the field read-only and raise an error if someone tries to change it.
+
+
+
